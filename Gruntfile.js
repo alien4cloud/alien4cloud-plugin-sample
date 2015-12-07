@@ -20,7 +20,9 @@ module.exports = function(grunt) {
       setup: 'src/main/build',
       app: 'src/main/webapp',
       test: 'src/test/webapp',
-      dist: 'target/webapp'
+      dist: 'target/webapp',
+      unpacked: 'target/a4c-unpacked',
+      serveOverride: 'src/test/webapp/serve-override'
     },
   };
   grunt.config.merge(config);

@@ -7,7 +7,7 @@ module.exports = function (grunt) {
       options: {
         appDir: '<%= yeoman.app %>',
         dir: '<%= yeoman.dist %>',
-        mainConfigFile:'./src/main/webapp/scripts/require.config.js',
+        mainConfigFile:'./src/main/webapp/scripts/plugin-require.config.js',
         modules:[
           {
             name:'a4c-plugin-sample'

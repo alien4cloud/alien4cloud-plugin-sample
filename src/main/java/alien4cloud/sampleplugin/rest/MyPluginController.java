@@ -12,8 +12,7 @@ import alien4cloud.audit.annotation.Audit;
 import alien4cloud.rest.model.RestResponse;
 import alien4cloud.rest.model.RestResponseBuilder;
 import alien4cloud.sampleplugin.services.MyPluginService;
-
-import com.wordnik.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiOperation;
 
 /**
  * Simple REST controller provided by the plugin

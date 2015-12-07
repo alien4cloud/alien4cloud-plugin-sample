@@ -5,21 +5,11 @@
 'use strict';
 
 define(function (require) {
-  var pluginId = 'a4c-plugin-sample';
   var states = require('states');
   var modules = require('modules');
-  var plugins = require('plugins');
-  var prefixer = {
-    prefix: function(url) {
-      return plugins.base(pluginId) + url;
-    }
-  };
+  var prefixer = require('scripts/plugin-url-prefixer');
 
   require('scripts/hello-service.js');
-
-  modules.get('a4c-plugin-sample').factory('prefixer', [function() {
-    return prefixer;
-  }]);
 
   modules.get('a4c-plugin-sample').controller('HelloController', ['$scope', 'helloService',
     function($scope, helloService) {

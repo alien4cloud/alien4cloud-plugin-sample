@@ -4,7 +4,7 @@
   <parent>
     <groupId>alien4cloud</groupId>
     <artifactId>alien4cloud-parent</artifactId>
-    <version>1.1.0-SM6</version>
+    <version>1.1.0-SM8-SNAPSHOT</version>
   </parent>
   <artifactId>alien4cloud-plugin-sample</artifactId>
   <name>Alien 4 Cloud Plugin sample</name>
@@ -112,34 +112,34 @@
           </execution>
         </executions>
       </plugin>
-      <!--<plugin>-->
-        <!--<groupId>org.apache.maven.plugins</groupId>-->
-        <!--<artifactId>maven-dependency-plugin</artifactId>-->
-        <!--<version>2.10</version>-->
-        <!--<executions>-->
-          <!--<execution>-->
-            <!--<id>unpack</id>-->
-            <!--<phase>generate-sources</phase>-->
-            <!--<goals>-->
-              <!--<goal>unpack</goal>-->
-            <!--</goals>-->
-            <!--<configuration>-->
-              <!--<artifactItems>-->
-                <!--<artifactItem>-->
-                  <!--<groupId>alien4cloud</groupId>-->
-                  <!--<artifactId>alien4cloud-engine</artifactId>-->
-                  <!--<version>${project.version}</version>-->
-                  <!--<classifier>standalone</classifier>-->
-                  <!--<type>war</type>-->
-                  <!--<includes>**/*</includes>-->
-                  <!--<excludes>WEB-INF/**/*, META-INF/**/*</excludes>-->
-                  <!--<outputDirectory>${project.build.directory}/a4c-unpacked</outputDirectory>-->
-                <!--</artifactItem>-->
-              <!--</artifactItems>-->
-            <!--</configuration>-->
-          <!--</execution>-->
-        <!--</executions>-->
-      <!--</plugin>-->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>2.10</version>
+        <executions>
+          <execution>
+            <id>unpack</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>unpack</goal>
+            </goals>
+            <configuration>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>alien4cloud</groupId>
+                  <artifactId>alien4cloud-ui</artifactId>
+                  <version>${project.version}</version>
+                  <classifier>standalone</classifier>
+                  <type>war</type>
+                  <includes>**/*</includes>
+                  <excludes>WEB-INF/**/*, META-INF/**/*</excludes>
+                  <outputDirectory>${project.build.directory}/a4c-unpacked</outputDirectory>
+                </artifactItem>
+              </artifactItems>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
   </build>
 
@@ -147,6 +147,12 @@
     <profile>
       <id>idea</id>
       <dependencies>
+        <dependency>
+          <groupId>alien4cloud</groupId>
+          <artifactId>alien4cloud-rest-api</artifactId>
+          <version>${project.version}</version>
+          <scope>compile</scope>
+        </dependency>
         <dependency>
           <groupId>alien4cloud</groupId>
           <artifactId>alien4cloud-core</artifactId>
