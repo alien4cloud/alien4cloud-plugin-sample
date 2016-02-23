@@ -2,9 +2,9 @@
 
 /* global define */
 
-'use strict';
-
 define(function (require) {
+  'use strict';
+  
   var states = require('states');
   var modules = require('modules');
   var prefixer = require('scripts/plugin-url-prefixer');
