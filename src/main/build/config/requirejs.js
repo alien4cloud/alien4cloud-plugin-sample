@@ -18,6 +18,7 @@ module.exports = function (grunt) {
           'modules': 'empty:',
           'plugins': 'empty:'
         },
+        namespace: 'a4CPluginSample',
 
         baseUrl: '.',
 
