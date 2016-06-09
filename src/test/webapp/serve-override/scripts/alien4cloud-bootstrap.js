@@ -10,11 +10,9 @@ define(function (require) {
 
   return {
     startup: function() {
-      plugins.init().then(function(files, modules) {
-        files.push('scripts/plugin-require.config.js');
-        modules.push('a4c-plugin-sample');
-        require(files, function() {
-          require(modules, function() {
+      plugins.init().then(function() {
+        require(['scripts/plugin-require.config.js'], function() {
+          require(['a4c-plugin-sample'], function() {
             alien4cloud.startup();
           });
         });
