@@ -9,8 +9,13 @@ define(function (require) {
   var plugins = require('plugins');
   var pluginId = 'a4c-plugin-sample';
   return {
+    enabled: true, // when runing with grunt serve the prefixing must be disabled
     prefix: function(url) {
-      return plugins.base(pluginId) + url;
+      if(this.enabled) {
+        return plugins.base(pluginId) + url;
+      } else {
+        return url;
+      }
     }
   };
 });
