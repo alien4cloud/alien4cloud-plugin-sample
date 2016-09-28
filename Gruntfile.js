@@ -15,16 +15,19 @@ module.exports = function(grunt) {
   require('time-grunt')(grunt);
 
   var config = {
-    // Project settings
     yeoman: {
       setup: 'src/main/build',
       app: 'src/main/webapp',
       test: 'src/test/webapp',
       dist: 'target/webapp',
-      unpacked: 'target/a4c-unpacked',
       serveOverride: 'src/test/webapp/serve-override'
-    },
+    }
   };
+  if(process.env.ALIEN_SOURCE_HOME) {
+    config.yeoman.alienSource = process.env.ALIEN_SOURCE_HOME;
+  } else {
+    config.yeoman.alienSource = '../alien4cloud/';
+  }
   grunt.config.merge(config);
 
   // Load configuration from multiple files
