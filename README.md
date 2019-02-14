@@ -53,3 +53,4 @@ A 'Hello plugin' menu will appear in the main navigation bar. If you click on it
 
 ![Alt text](doc/display.png?raw=true "Display A4C plugin")
 
+That's all folks !
