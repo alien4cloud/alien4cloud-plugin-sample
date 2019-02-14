@@ -12,17 +12,17 @@ It can contain it's own beans that can access to main context's beans.
 
 #### The @Configuration
 
-[alien4cloud.sampleplugin.ContextConfiguration](src/alien4cloud-plugin-sample/src/main/java/alien4cloud/sampleplugin/ContextConfiguration.java)
 
-The class `alien4cloud.sampleplugin.ContextConfiguration` is the entry point of the plugin backend. It defines the context and how to configure it. In this example, we simply scan the package `alien4cloud.sampleplugin` in order to detect and instanciate beans.
+
+The class [alien4cloud.sampleplugin.ContextConfiguration](src/main/java/alien4cloud/sampleplugin/ContextConfiguration.java) is the entry point of the plugin backend. It defines the context and how to configure it. In this example, we simply scan the package `alien4cloud.sampleplugin` in order to detect and instantiate beans.
 
 #### The @Service
 
-The class `alien4cloud.sampleplugin.services.MyPluginService` is a Spring @Service that contains the 'logic'.
+The class [alien4cloud.sampleplugin.services.MyPluginService](src/main/java/alien4cloud/sampleplugin/services/MyPluginService.java) is a Spring @Service that contains the 'logic'.
 
 #### The @RestController
 
-The class `alien4cloud.sampleplugin.rest.MyPluginController` is a Spring controller that exposes a REST endpoint `/rest/sample/hello`
+The class [alien4cloud.sampleplugin.rest.MyPluginController](src/main/java/alien4cloud/sampleplugin/rest/MyPluginController.java) is a Spring controller that exposes a REST endpoint `/rest/sample/hello`
 
 It simply calls the service to build a simple response.
 
