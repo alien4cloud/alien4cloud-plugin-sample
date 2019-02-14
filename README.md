@@ -22,7 +22,7 @@ The class [alien4cloud.sampleplugin.services.MyPluginService](src/main/java/alie
 
 #### The @RestController
 
-The class [alien4cloud.sampleplugin.rest.MyPluginController](src/main/java/alien4cloud/sampleplugin/rest/MyPluginController.java) is a Spring controller that exposes a REST endpoint `/rest/sample/hello`
+The class [alien4cloud.sampleplugin.rest.MyPluginController](src/main/java/alien4cloud/sampleplugin/rest/MyPluginController.java) is a Spring controller that exposes a REST endpoint (`/rest/sample/hello`).
 
 It simply calls the service to build a simple response.
 
@@ -32,13 +32,13 @@ Optionally, a plugin can embed UI parts.
 
 The UI part of this simple plugin add a menu in the main Alien4Cloud navigation bar that display a page. The page displays the result of the service call through the REST endpoint.
 
-- the file `src/main/webapp/views/hello.html` is the angular view.
-- the file `src/main/webapp/scripts/hello-service.js` creates an angular service used by the angular controller. It's in charge of calling the REST resource.
-- the file `src/main/webapp/scripts/plugin.js` is the UI entry point of the plugin : it creates a angular controller, bind it to the service, and define the view template. It also configure menu entry for the plugin.
+- the file [src/main/webapp/views/hello.html]() is the angular view.
+- the file [src/main/webapp/scripts/hello-service.js]() creates an angular service used by the angular controller. It's in charge of calling the REST resource.
+- the file [src/main/webapp/scripts/plugin.js]() is the UI entry point of the plugin : it creates a angular controller, bind it to the service, and define the view template. It also configure menu entry for the plugin.
 
 ### The manifest
 
-Last but not least, the file `META-INF/plugin.yml` is the manifest of the plugin.
+Last but not least, the file [META-INF/plugin.yml]() is the manifest of the plugin.
 It's needed by A4C to properly activate the plugin.
 
 ## Build and test
