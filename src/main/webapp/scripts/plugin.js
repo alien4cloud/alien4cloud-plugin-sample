@@ -13,7 +13,7 @@ define(function (require) {
 
   modules.get('a4c-plugin-sample').controller('HelloController', ['$scope', 'helloService',
     function($scope, helloService) {
-      $scope.hello = helloService.get({name: 'toto'});
+      $scope.hello = helloService.get({name: 'world'});
     }
   ]);
 
@@ -27,7 +27,7 @@ define(function (require) {
       id: 'menu.a4c-plugin-sample',
       state: 'a4cpluginsample',
       key: 'Hello plugin',
-      icon: 'fa fa-wrench',
+      icon: 'fa fa-coffee',
       priority: 11000,
       roles: ['ADMIN']
     }

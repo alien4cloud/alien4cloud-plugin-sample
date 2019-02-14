@@ -1,8 +1,11 @@
+# Each plugin should have a unique ID.
 id: a4c-plugin-sample
 name: Alien 4 Cloud Plugin sample.
 version: ${project.version}
 description: Sample for alien 4 cloud plugin.
+# The class that will be used to configure the child context that will be started at plugin start.
 configuration_class: alien4cloud.sampleplugin.ContextConfiguration
+# Optionally, The UI entry point of the plugin.
 ui_entry_point: scripts/plugin.js
 component_descriptors:
   - bean_name: myPluginService
