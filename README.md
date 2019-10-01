@@ -22,9 +22,10 @@ The class [alien4cloud.sampleplugin.services.MyPluginService](src/main/java/alie
 
 #### The @RestController
 
-The class [alien4cloud.sampleplugin.rest.MyPluginController](src/main/java/alien4cloud/sampleplugin/rest/MyPluginController.java) is a Spring controller that exposes a REST endpoint (`/rest/sample/hello`).
+The class [alien4cloud.sampleplugin.rest.MyPluginController](src/main/java/alien4cloud/sampleplugin/rest/MyPluginController.java) is a Spring controller that exposes a simple REST endpoint (`/rest/sample/hello`) and another endpoint (`/rest/sample/hello/authenticated`) which requires an authentication.
+Notice the method for authenticated endpoint needs to be public to allow Spring security @PreAuthorize annotations lookup.
 
-It simply calls the service to build a simple response.
+They both simply calls the service to build a simple response.
 
 ### The UI part
 
