@@ -5,3 +5,7 @@ target
 .tmp
 alien4cloud-plugin-sample-addon/node
 package-lock.json
+alien4cloud-plugin-sample-addon/projects/alien4cloud-plugin-sample-addon/assets/i18n
+alien4cloud-plugin-sample-addon/projects/alien4cloud-plugin-sample-addon/assets/styles
+alien4cloud-plugin-sample-addon/projects/alien4cloud-plugin-sample-addon/assets/images
+.bower.json
