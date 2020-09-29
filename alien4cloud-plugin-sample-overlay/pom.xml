@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>alien4cloud</groupId>
+        <artifactId>alien4cloud-nexus-inventory-plugin</artifactId>
+        <version>3.0.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>alien4cloud-plugin-sample-overlay</artifactId>
+    <version>3.0.0-SNAPSHOT</version>
+    <name>Alien 4 Cloud Plugin sample - A4C War overlay</name>
+    <packaging>war</packaging>
+
+    <dependencies>
+        <dependency>
+            <groupId>alien4cloud</groupId>
+            <artifactId>alien4cloud-ui</artifactId>
+            <version>${project.version}</version>
+            <type>war</type>
+            <classifier>standalone</classifier>
+        </dependency>
+        <dependency>
+            <groupId>alien4cloud</groupId>
+            <artifactId>alien4cloud-premium-security</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.alien4cloud</groupId>
+            <artifactId>alien4cloud-ha</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+          <groupId>alien4cloud</groupId>
+          <artifactId>alien4cloud-plugin-sample-addon</artifactId>
+          <version>${project.version}</version>
+          <type>zip</type>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.3</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                    <overlays>
+                        <overlay>
+                            <groupId>alien4cloud</groupId>
+                            <artifactId>alien4cloud-ui</artifactId>
+                            <classifier>standalone</classifier>
+                        </overlay>
+                        <!-- [[ Wizard addon for sample -->
+                        <overlay>
+                          <groupId>alien4cloud</groupId>
+                          <artifactId>alien4cloud-plugin-sample-addon</artifactId>
+                          <type>zip</type>
+                          <excludes>
+                            <exclude>wizard_addon.json</exclude>
+                          </excludes>
+                          <!-- The targetPath will define the addon webapp url -->
+                          <targetPath>sample_addon</targetPath>
+                        </overlay>
+                        <overlay>
+                          <groupId>alien4cloud</groupId>
+                          <artifactId>alien4cloud-plugin-sample-addon</artifactId>
+                          <type>zip</type>
+                          <includes>
+                            <include>wizard_addon.json</include>
+                            <!--<include>assets/i18n/addon-*.json</include>-->
+                          </includes>
+                          <!-- The targetPath after wizard_addons/ must be related to the zip targetPath above -->
+                          <targetPath>wizard_addons/sample_addon</targetPath>
+                        </overlay>
+                        <!-- ]] -->
+                    </overlays>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>default-war</id>
+                        <phase>none</phase>
+                    </execution>
+                    <execution>
+                        <id>war-exploded</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>exploded</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>custom-war</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>war</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.wso2.maven</groupId>
+                <artifactId>wso2-maven-json-merge-plugin</artifactId>
+                <version>5.2.29</version>
+                <executions>
+                    <execution>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>merge</goal>
+                        </goals>
+                        <configuration>
+                            <!--
+                            For addon title and description translation in wizard home page : we merge all addon-*.json in a single
+                            addons-*.json file available from wizard.
+                            Note that because this plugin wso2-maven-json-merge-plugin doesn't well manage UTF-8 file (output are ascii files),
+                            you need to encode your "Feature" section using HTML special chars (https://ascii.cl/htmlcodes.htm).
+                            -->
+                            <tasks>
+                                <task>
+                                    <base>${project.build.directory}/${project.build.finalName}/wizard/assets/i18n/addons.json</base>
+                                    <!-- For each addon, add an include tag -->
+                                    <include>
+                                        <param>
+                                            ${project.build.directory}/${project.build.finalName}/sample_addon/assets/i18n/addon-en.json
+                                        </param>
+                                    </include>
+                                    <target>
+                                        ${project.build.directory}/${project.build.finalName}/wizard/assets/i18n/addons-en.json
+                                    </target>
+                                    <mergeChildren>true</mergeChildren>
+                                </task>
+                                <task>
+                                    <base>${project.build.directory}/${project.build.finalName}/wizard/assets/i18n/addons.json</base>
+                                    <!-- For each addon, add an include tag -->
+                                    <include>
+                                        <param>
+                                            ${project.build.directory}/${project.build.finalName}/sample_addon/assets/i18n/addon-fr.json
+                                        </param>
+                                    </include>
+                                    <target>
+                                        ${project.build.directory}/${project.build.finalName}/wizard/assets/i18n/addons-fr.json
+                                    </target>
+                                    <mergeChildren>true</mergeChildren>
+                                </task>
+                            </tasks>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot.version}</version>
+                <executions>
+                    <execution>
+                        <id>package-standalone</id>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                        <configuration>
+                            <classifier>standalone</classifier>
+                            <mainClass>alien4cloud.Application</mainClass>
+                            <excludes>
+                                <exclude>
+                                    <groupId>alien4cloud</groupId>
+                                    <artifactId>alien4cloud-ui</artifactId>
+                                </exclude>
+                            </excludes>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

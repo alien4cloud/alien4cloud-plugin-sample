@@ -3,3 +3,5 @@ src/main/webapp/bower_components
 target
 .sass-cache
 .tmp
+alien4cloud-plugin-sample-addon/node
+package-lock.json
