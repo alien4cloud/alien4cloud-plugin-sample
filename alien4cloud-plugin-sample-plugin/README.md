@@ -1,4 +1,4 @@
-# alien4cloud-plugin-sample
+# alien4cloud-plugin-sample-plugin
 Sample plugin with rest service and ui components.
 
 This project is a small illustration of what can be done into alien4cloud in terms of customization.
@@ -7,7 +7,7 @@ This project is a small illustration of what can be done into alien4cloud in ter
 
 ### The backend part
 
-In A4C, a plugin, when loaded and activated, will start a Spring context, child of the main application context. 
+In A4C, a plugin, when loaded and activated, will start a Spring context, child of the main application context.
 It can contain it's own beans that can access to main context's beans.
 
 #### The @Configuration

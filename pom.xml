@@ -17,6 +17,33 @@
 		<module>alien4cloud-plugin-sample-plugin</module>
 		<module>alien4cloud-plugin-sample-addon</module>
 		<module>alien4cloud-plugin-sample-overlay</module>
+    <module>alien4cloud-plugin-sample-modifier</module>
 	</modules>
+
+  <scm>
+      <connection>scm:git:https://github.com/alien4cloud/alien4cloud-plugin-sample.git</connection>
+  </scm>
+
+  <repositories>
+      <repository>
+          <id>repo.opensource.fastconnect.org</id>
+          <url>http://fastconnect.org/maven/content/repositories/opensource</url>
+      </repository>
+      <repository>
+          <id>repo.opensource.snapshot.fastconnect.org</id>
+          <url>http://fastconnect.org/maven/content/repositories/opensource-snapshot</url>
+      </repository>
+  </repositories>
+
+  <distributionManagement>
+      <repository>
+          <id>repo.opensource.fastconnect.org</id>
+          <url>https://fastconnect.org/maven/content/repositories/opensource</url>
+      </repository>
+      <snapshotRepository>
+          <id>repo.opensource.snapshot.fastconnect.org</id>
+          <url>https://fastconnect.org/maven/content/repositories/opensource-snapshot</url>
+      </snapshotRepository>
+  </distributionManagement>
 
 </project>
