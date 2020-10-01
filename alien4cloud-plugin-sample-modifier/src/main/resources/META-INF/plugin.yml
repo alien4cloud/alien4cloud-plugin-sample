@@ -1,0 +1,11 @@
+id: sample-modifier-plugin
+name: Sample Modifier plugin
+version: ${project.version}
+description: >
+  This plugin adds a sample modifier.
+configuration_class: alien4cloud.plugin.sample_modifier.PluginConfiguration
+component_descriptors:
+  - bean_name: sample-modifier-plugin
+    name: Sample Modifier
+    description: >
+      Add a compute node and add depends on relationships to its from all nodes in topology

@@ -1,0 +1,5 @@
+{
+  "id": "sampleAddon",
+  "iconName": "local_cafe",
+  "roles": ["COMPONENTS_MANAGER"]
+}

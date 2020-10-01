@@ -1,0 +1,18 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./out-tsc/spec",
+    "types": [
+      "jasmine",
+      "node"
+    ]
+  },
+  "files": [
+    "projects/alien4cloud-plugin-sample-addon/src/app/test.ts",
+    "projects/alien4cloud-plugin-sample-addon/src/app/polyfills.ts"
+  ],
+  "include": [
+    "projects/alien4cloud-plugin-sample-addon/src/**/*.spec.ts",
+    "projects/alien4cloud-plugin-sample-addon/src/**/*.d.ts"
+  ]
+}

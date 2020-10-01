@@ -1,0 +1,22 @@
+<div fxLayout="column">
+    <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="center center">
+        <mat-form-field fxFlex="50%">
+            <input matInput [placeholder]="'sampleAddon.placeholder' | translate"
+                   [formControl]="inputField"
+                   (keydown.enter)="submit()"
+                   required>
+        </mat-form-field>
+        <button fxFlex="10%"
+                mat-stroked-button
+                color="primary"
+                (click)="submit()"
+                [disabled]="!inputField.valid"
+                matTooltip="{{'sampleAddon.tooltip' | translate}}">
+            <mat-icon>local_cafe</mat-icon>
+        </button>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center center">
+        <h2 *ngIf="message" [@fade]="'in'">{{ message }}</h2>
+        <span *ngIf="error" [@fade]="'in'" class="mat-error">{{ error }}</span>
+    </div>
+</div>

@@ -1,0 +1,8 @@
+{
+  "name": "alien4cloud-plugin-sample",
+  "version": "1.0.0",
+  "dependencies": {
+    "requirejs": "2.1.10"
+  },
+  "devDependencies": {}
+}

@@ -1,0 +1,12 @@
+{
+  "sampleAddon": {
+    "placeholder": "Enter your name",
+    "tooltip": "Send request"
+  },
+  "Feature": {
+    "sampleAddon": {
+      "label": "Hello World",
+      "description": "Sample Wizard addon that just says Hello using the sample plugin REST endpoint."
+    }
+  }
+}
