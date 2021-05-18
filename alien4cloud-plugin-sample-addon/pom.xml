@@ -11,7 +11,7 @@
   <artifactId>alien4cloud-plugin-sample-addon</artifactId>
   <name>Alien 4 Cloud Plugin sample - Wizard addon</name>
   <description>Wizard addon for sample plugin</description>
-  <version>3.0.0-SNAPSHOT</version>
+  <version>3.3.0-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <properties>
