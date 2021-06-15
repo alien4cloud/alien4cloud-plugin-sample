@@ -1,0 +1,157 @@
+
+- es_index: toscaelement
+  es_type: nodetype
+  target_element_id: org.alien4cloud.sampleplugin.suggestions.nodes.SuggestionSampleComponent
+  target_property: vaccin_name
+  suggestion_policy: Strict
+  # A static suggestion entry (not related to a plugin bean) can provide simple suggestion (just a list of strings)
+  suggestions:
+    - Pfizer
+    - Moderna
+    - Jonhson
+  # and/or complex suggestion (value/description tuples)
+  complex_suggestions:
+    - value: "Astrazeneca"
+      description: "Deprecated !"
+    - value: "Sanofi"
+      description: "In Progress !"
+
+- es_index: toscaelement
+  es_type: nodetype
+  target_element_id: org.alien4cloud.sampleplugin.suggestions.nodes.SuggestionSampleComponent
+  target_property: vaccin_version
+  suggestion_policy: Strict
+  suggestion_hook_plugin: "a4c-sampleplugin-suggestions:sample-version-suggestion-provider"
+
+- es_index: toscaelement
+  es_type: nodetype
+  target_element_id: org.alien4cloud.sampleplugin.suggestions.nodes.SuggestionSampleComponent
+  target_property: injection_protocol
+  suggestion_policy: Accept
+  suggestion_hook_plugin: "a4c-sampleplugin-suggestions:simple-suggestion-provider"
+
+- es_index: toscaelement
+  es_type: datatype
+  target_element_id: org.alien4cloud.sampleplugin.suggestions.datatypes.SampleComplexDataType
+  target_property: nested
+  suggestion_policy: Strict
+  suggestions:
+    - One
+    - Two
+    - Tree
+
+- es_index: toscaelement
+  es_type: datatype
+  target_element_id: org.alien4cloud.sampleplugin.suggestions.datatypes.SampleComplexDataType
+  target_property: nested_array
+  suggestion_policy: Accept
+  suggestions:
+    - Un
+    - Dos
+    - Tres
+
+- es_index: toscaelement
+  es_type: datatype
+  target_element_id: org.alien4cloud.sampleplugin.suggestions.datatypes.SampleComplexDataType
+  target_property: nested_map
+  suggestion_policy: Ask
+  suggestions:
+    - Un
+    - Deux
+    - Trois
+    - Quatre
+
+- es_index: toscaelement
+  es_type: datatype
+  target_element_id: org.alien4cloud.sampleplugin.suggestions.datatypes.InnerComplexDataType
+  target_property: inner_nested
+  suggestion_policy: Strict
+  suggestions:
+    - One
+    - Two
+    - Tree
+
+- es_index: toscaelement
+  es_type: datatype
+  target_element_id: org.alien4cloud.sampleplugin.suggestions.datatypes.InnerComplexDataType
+  target_property: inner_nested_array
+  suggestion_policy: Accept
+  suggestions:
+    - Un
+    - Dos
+    - Tres
+
+- es_index: toscaelement
+  es_type: datatype
+  target_element_id: org.alien4cloud.sampleplugin.suggestions.datatypes.InnerComplexDataType
+  target_property: inner_nested_map
+  suggestion_policy: Ask
+  suggestions:
+    - Un
+    - Deux
+    - Trois
+
+- es_index: toscaelement
+  es_type: policytype
+  target_element_id: org.alien4cloud.sampleplugin.suggestions.policies.SuggestionSamplePolicy
+  target_property: crontab
+  suggestion_policy: Accept
+  complex_suggestions:
+    - value: "0 0/5 * * * ?"
+      description: "Every 5 minutes"
+    - value: "0 0/10 * * * ?"
+      description: "Every 10 minutes"
+    - value: "0 10 12 * * ?"
+      description: "Every day at 12:10"
+    - value: "0 0 * ? * *"
+      description: "Every hour"
+    - value: "0 0 12 ? * SUN,SAT"
+      description: "Every Saturday and Sunday at noon"
+    - value: "0 0 12 ? JAN,JUN *"
+      description: "Every day at noon in January and June"
+
+- es_index: toscaelement
+  es_type: datatype
+  target_element_id: org.alien4cloud.sampleplugin.suggestions.datatypes.PolicyDataType
+  target_property: affinity_country
+  suggestion_policy: Accept
+  suggestion_hook_plugin: "a4c-sampleplugin-suggestions:sample-country-suggestion-provider"
+
+- es_index: toscaelement
+  es_type: datatype
+  target_element_id: org.alien4cloud.sampleplugin.suggestions.datatypes.PolicyDataType
+  target_property: affinity_generation
+  suggestion_policy: Strict
+  suggestions:
+    - 1G
+    - 3G
+    - 5G
+    - 7G
+    - 11G
+  complex_suggestions:
+    - value: 13G
+      description: "Default"
+
+- es_index: toscaelement
+  es_type: capabilitytype
+  target_element_id: org.alien4cloud.sampleplugin.suggestions.capabilities.SampleEndpoint
+  target_property: capa_property
+  suggestion_policy: Accept
+  suggestions:
+    - Lorem Ipsum
+    - is simply dummy text
+    - of the printing
+    - and typesetting industry
+
+- es_index: toscaelement
+  es_type: relationshiptype
+  target_element_id: org.alien4cloud.sampleplugin.suggestions.relationships.SampleConnectTo
+  target_property: rel_property
+  suggestion_policy: Add
+  suggestions:
+    - Contrary to popular belief
+    - Lorem Ipsum is not simply random text
+    - It has roots in a piece of classical Latin literature from 45 BC
+    - making it over 2000 years old
+
+

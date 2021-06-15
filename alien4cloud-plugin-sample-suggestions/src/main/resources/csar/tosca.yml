@@ -1,0 +1,179 @@
+tosca_definitions_version: alien_dsl_2_0_0
+
+metadata:
+  template_name: org.alien4cloud.sampleplugin.suggestions
+  # Will be replaced with mvn property org.alien4cloud.scheduling.version during build
+  template_version: 3.0.0-SNAPSHOT
+  template_author: alien4cloud
+
+description: |
+  Types to illustrate suggestions in plugins.
+
+imports:
+  - tosca-normative-types:1.0.0-ALIEN20
+  - alien-base-types:3.0.0
+
+data_types:
+  org.alien4cloud.sampleplugin.suggestions.datatypes.SampleComplexDataType:
+    derived_from: tosca.datatypes.Root
+    description: A complex data type to illustrate suggestion context in nested properties, lists and maps.
+    properties:
+      nested:
+        type: string
+        required: false
+        description: All string property can be suggested
+      nested_array:
+        type: list
+        required: false
+        description: List of strings can also be suggested
+        entry_schema:
+          type: string
+      nested_map:
+        type: map
+        required: false
+        description: Map of strings can also be suggested (for value)
+        entry_schema:
+          type: string
+      inner_nested_complex:
+        type: org.alien4cloud.sampleplugin.suggestions.datatypes.InnerComplexDataType
+        required: false
+  org.alien4cloud.sampleplugin.suggestions.datatypes.InnerComplexDataType:
+    derived_from: tosca.datatypes.Root
+    description: A complex data type to illustrate suggestion context in deep nested properties, lists and maps.
+    properties:
+      inner_nested:
+        type: string
+        required: false
+        description: All string property can be suggested
+      inner_nested_array:
+        type: list
+        required: false
+        description: List of strings can also be suggested
+        entry_schema:
+          type: string
+      inner_nested_map:
+        type: map
+        required: false
+        description: Map of strings can also be suggested (for value)
+        entry_schema:
+          type: string
+  org.alien4cloud.sampleplugin.suggestions.datatypes.PolicyDataType:
+    derived_from: tosca.datatypes.Root
+    properties:
+      affinity_country:
+        type: string
+        description: The country code for a pseudo afinity placement policy
+      affinity_generation:
+        type: string
+        description: Another property
+
+relationship_types:
+
+  org.alien4cloud.sampleplugin.suggestions.relationships.SampleConnectTo:
+    derived_from: tosca.relationships.ConnectsTo
+    valid_target_types: [ org.alien4cloud.sampleplugin.suggestions.capabilities.SampleEndpoint ]
+    properties:
+      complex:
+        type: org.alien4cloud.sampleplugin.suggestions.datatypes.SampleComplexDataType
+        required: false
+      rel_property:
+        type: string
+        required: false
+        description: |
+          A property related to a relationship
+
+capability_types:
+
+  org.alien4cloud.sampleplugin.suggestions.capabilities.SampleEndpoint:
+    derived_from: tosca.capabilities.Root
+    properties:
+      complex:
+        type: org.alien4cloud.sampleplugin.suggestions.datatypes.SampleComplexDataType
+        required: false
+      capa_property:
+        type: string
+        required: false
+        description: |
+          A property on a capability.
+
+node_types:
+
+  org.alien4cloud.sampleplugin.suggestions.nodes.AbstractSuggestionSampleComponent:
+    derived_from: tosca.nodes.Root
+    abstract: true
+    capabilities:
+      sample_endpoint:
+        type: org.alien4cloud.sampleplugin.suggestions.capabilities.SampleEndpoint
+        occurrences: [0, unbounded]
+
+  org.alien4cloud.sampleplugin.suggestions.nodes.SuggestionSampleComponent:
+    derived_from: org.alien4cloud.sampleplugin.suggestions.nodes.AbstractSuggestionSampleComponent
+    properties:
+      complex_nested:
+        type: org.alien4cloud.sampleplugin.suggestions.datatypes.SampleComplexDataType
+        required: false
+      vaccin_name:
+        type: string
+        required: true
+        description: |
+          Name of the vaccin to inject.
+      vaccin_version:
+        type: version
+        required: true
+        description: |
+          Version of the vaccin to inject.
+      injection_protocol:
+        type: string
+        required: false
+        description: |
+          Description of the protocole (how many injections).
+    requirements:
+      - sample_endpoint:
+          capability: org.alien4cloud.sampleplugin.suggestions.capabilities.SampleEndpoint
+          relationship: org.alien4cloud.sampleplugin.suggestions.relationships.SampleConnectTo
+          occurrences: [0, unbounded]
+
+policy_types:
+  org.alien4cloud.sampleplugin.suggestions.policies.SuggestionSamplePolicy:
+    derived_from: tosca.policies.Placement
+    description: >
+      A sample policy.
+    properties:
+      crontab:
+        type: string
+        description: A crontab
+        required: true
+      policy_details:
+        type: org.alien4cloud.sampleplugin.suggestions.datatypes.PolicyDataType
+
+#topology_template:
+#  inputs:
+#    vaccin_name:
+#      type: string
+#      required: true
+#      description: "Name of the vaccin to inject."
+#  node_templates:
+#    ComponentA:
+#      metadata:
+#        a4c_edit_x: "-142"
+#        a4c_edit_y: "-108"
+#      type: org.alien4cloud.sampleplugin.suggestions.nodes.SuggestionSampleComponent
+#      properties:
+#        vaccin_name: { get_input: vaccin_name }
+#      requirements:
+#        - sampleConnectToSuggestionSampleComponentCopySample_endpoint:
+#            type_requirement: sample_endpoint
+#            node: ComponentB
+#            capability: org.alien4cloud.sampleplugin.suggestions.capabilities.SampleEndpoint
+#            relationship: org.alien4cloud.sampleplugin.suggestions.relationships.SampleConnectTo
+#    ComponentB:
+#      metadata:
+#        a4c_edit_x: 122
+#        a4c_edit_y: "-53"
+#      type: org.alien4cloud.sampleplugin.suggestions.nodes.SuggestionSampleComponent
+#      properties:
+#        vaccin_name: { get_input: vaccin_name }
+#  policies:
+#    - Placement:
+#        type: tosca.policies.Placement
+#        targets: [ ComponentA ]

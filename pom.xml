@@ -13,12 +13,13 @@
   <packaging>pom</packaging>
   <description>This project is a sample on how to build a ui plugin for Alien 4 Cloud.</description>
 
-  <modules>
-		<module>alien4cloud-plugin-sample-plugin</module>
-		<module>alien4cloud-plugin-sample-addon</module>
-		<module>alien4cloud-plugin-sample-overlay</module>
-    <module>alien4cloud-plugin-sample-modifier</module>
-	</modules>
+    <modules>
+        <module>alien4cloud-plugin-sample-plugin</module>
+        <module>alien4cloud-plugin-sample-addon</module>
+        <module>alien4cloud-plugin-sample-overlay</module>
+        <module>alien4cloud-plugin-sample-modifier</module>
+        <module>alien4cloud-plugin-sample-suggestions</module>
+    </modules>
 
   <scm>
       <connection>scm:git:https://github.com/alien4cloud/alien4cloud-plugin-sample.git</connection>

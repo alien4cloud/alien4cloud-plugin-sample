@@ -1,0 +1,20 @@
+# Each plugin should have a unique ID.
+id: a4c-sampleplugin-suggestions
+name: Alien 4 Cloud Suggestions plugin sample.
+version: ${project.version}
+description: A suggestion provider.
+# The class that will be used to configure the child context that will be started at plugin start.
+configuration_class: alien4cloud.sampleplugin.suggestions.SuggestionsContextConfiguration
+component_descriptors:
+  - bean_name: simple-suggestion-provider
+    name: A very simple suggestion provider
+    description: >
+      Very simple implementation of ISimpleSuggestionPluginProvider.
+  - bean_name: sample-country-suggestion-provider
+    name: A suggestion provider that fetch data from the Internet
+    description: >
+      Suggest country names with codes.
+  - bean_name: sample-version-suggestion-provider
+    name: A versions suggestions provider
+    description: >
+      Provide a version list differently regarding the context.
