@@ -1,8 +1,12 @@
 
 - es_index: toscaelement
+  # This suggestion configuration is related to a node type
   es_type: nodetype
+  # The TOSCA id of the node type concerned by this suggestion configuration
   target_element_id: org.alien4cloud.sampleplugin.suggestions.nodes.SuggestionSampleComponent
+  # The property name concerned by this suggestion configuration
   target_property: vaccin_name
+  # Policy Strict means that the end-user MUST choose one of the suggested values
   suggestion_policy: Strict
   # A static suggestion entry (not related to a plugin bean) can provide simple suggestion (just a list of strings)
   suggestions:
@@ -21,16 +25,20 @@
   target_element_id: org.alien4cloud.sampleplugin.suggestions.nodes.SuggestionSampleComponent
   target_property: vaccin_version
   suggestion_policy: Strict
+  # This suggestion configuration will delegate to the bean named 'sample-version-suggestion-provider'
+  # See src/main/java/alien4cloud/sampleplugin/suggestions/providers/VersionSuggestionProvider.java
   suggestion_hook_plugin: "a4c-sampleplugin-suggestions:sample-version-suggestion-provider"
 
 - es_index: toscaelement
   es_type: nodetype
   target_element_id: org.alien4cloud.sampleplugin.suggestions.nodes.SuggestionSampleComponent
   target_property: injection_protocol
+  # The policy 'Accept' means that the user can use suggested values but also type whatever s.he wants
   suggestion_policy: Accept
   suggestion_hook_plugin: "a4c-sampleplugin-suggestions:simple-suggestion-provider"
 
 - es_index: toscaelement
+  # This suggestion configuration is related to a datatype
   es_type: datatype
   target_element_id: org.alien4cloud.sampleplugin.suggestions.datatypes.SampleComplexDataType
   target_property: nested
@@ -54,6 +62,7 @@
   es_type: datatype
   target_element_id: org.alien4cloud.sampleplugin.suggestions.datatypes.SampleComplexDataType
   target_property: nested_map
+  # Policy 'Ask' means that the user will be asked if s.he wants to add new values in suggestions
   suggestion_policy: Ask
   suggestions:
     - Un
@@ -92,6 +101,7 @@
     - Trois
 
 - es_index: toscaelement
+  # This suggestion configuration is related to a policy type
   es_type: policytype
   target_element_id: org.alien4cloud.sampleplugin.suggestions.policies.SuggestionSamplePolicy
   target_property: crontab
@@ -147,6 +157,7 @@
   es_type: relationshiptype
   target_element_id: org.alien4cloud.sampleplugin.suggestions.relationships.SampleConnectTo
   target_property: rel_property
+  # Policy 'Add' means that a new value typed by the user will be added in the suggestions values (for later usage)
   suggestion_policy: Add
   suggestions:
     - Contrary to popular belief

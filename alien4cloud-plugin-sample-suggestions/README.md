@@ -38,7 +38,7 @@ A `SuggestionEntry` defines :
 * **es_type**: The kind of object concerned by the suggestion (nodetype, datatype ...). It's actually the ES index name that stores the type.
 * **target_element_id**: ID of TOSCA element (for example: node type name).
 * **target_property**: The property of the element that is concerned by the suggestions.
-* **suggestion_policy**: The policy to apply when a new value is types by the user.
+* **suggestion_policy**: The policy to apply when a new value is typed by the user.
 
 The suggestions can be given by this configuration (static) or defines a plugin hook (a bean that will provide suggestions).
 
@@ -60,7 +60,9 @@ The policy is **Strict**, so the end-user MUST one of the provided values : _One
 Our plugin provides a component (a Spring bean) that acts has a [suggestion configurator](src/main/java/alien4cloud/sampleplugin/suggestions/SuggestionConfigurator.java).
 
 It parses the content of the [a4c-sampleplugin-suggestions-configuration.yml](src/main/resources/suggestions/a4c-sampleplugin-suggestions-configuration.yml) file.
-Some of them are static (values are provided directly in the config), and some others are configured to let a hook bean provide suggestion values.
+Some of them are static (values are provided directly in the config), and some others are configured to let a hook bean provide suggestion values (read comments in the yaml file).
+
+>  Please use a distinguished name for this file, for example by prefixing it's name by the pluginId (risks of collisions in classpath).
 
 ## Provide suggestions by plugin
 
@@ -100,7 +102,7 @@ The [VersionSuggestionProvider](src/main/java/alien4cloud/sampleplugin/suggestio
 It is in charge of providing a list of versions for the property `vaccin_version` of the embedded TOSCA node type `org.alien4cloud.sampleplugin.suggestions.nodes.SuggestionSampleComponent`.
 When the context edition is related to a topology edition, the result will depend on the value of another property of the node.
 
-> Please note that the topology is not retrieved the same wave regarding the fact we are in an edition context or not. 
+> Please note that the topology is not retrieved the same way regarding the fact we are in an edition context or not. 
 > Using the `EditorService` when the user is editing a topology make us able to access property values even if the topology is not saved.
 
 The provider will also provide different values if the current environment is a production environment or not (`-SNAPSHOT` is added to every version number when the environment is not a production environment).
