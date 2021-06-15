@@ -1,7 +1,7 @@
 package alien4cloud.sampleplugin.suggestions.providers;
 
-import alien4cloud.model.common.Suggestion;
-import alien4cloud.model.common.SuggestionRequestContext;
+import alien4cloud.model.suggestion.Suggestion;
+import alien4cloud.model.suggestion.SuggestionRequestContext;
 import alien4cloud.rest.utils.JsonUtil;
 import alien4cloud.sampleplugin.suggestions.model.Country;
 import alien4cloud.suggestions.IComplexSuggestionPluginProvider;

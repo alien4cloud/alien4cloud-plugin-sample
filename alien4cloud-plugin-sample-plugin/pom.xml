@@ -4,12 +4,12 @@
   <parent>
     <groupId>alien4cloud</groupId>
     <artifactId>alien4cloud-plugin-sample</artifactId>
-    <version>3.3.0-SNAPSHOT</version>
+    <version>3.4.0-SNAPSHOT</version>
   </parent>
 
   <artifactId>alien4cloud-plugin-sample-plugin</artifactId>
   <name>Alien 4 Cloud Plugin sample - A4C plugin</name>
-  <version>3.3.0-SNAPSHOT</version>
+  <version>3.4.0-SNAPSHOT</version>
   <description>This project is a sample on how to build a ui plugin for Alien 4 Cloud.</description>
 
   <dependencies>

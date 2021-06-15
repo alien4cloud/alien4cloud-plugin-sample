@@ -1,12 +1,11 @@
 package alien4cloud.sampleplugin.suggestions.providers;
 
-import alien4cloud.model.common.SuggestionRequestContext;
+import alien4cloud.model.suggestion.SuggestionRequestContext;
 import alien4cloud.suggestions.ISimpleSuggestionPluginProvider;
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
 import java.util.Collection;
 import java.util.List;
 

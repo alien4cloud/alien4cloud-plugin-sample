@@ -1,7 +1,7 @@
 package alien4cloud.sampleplugin.suggestions;
 
 import alien4cloud.events.AlienEvent;
-import alien4cloud.model.common.SuggestionEntry;
+import alien4cloud.model.suggestion.SuggestionEntry;
 import alien4cloud.suggestions.services.SuggestionService;
 import alien4cloud.utils.YamlParserUtil;
 import lombok.extern.slf4j.Slf4j;
